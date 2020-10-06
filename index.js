@@ -2,6 +2,9 @@ const endpoint = ("http://localhost:3000/api/v1/movies")
 
 document.addEventListener('DOMContentLoaded', () => {
     getMovie()
+
+    const newFormData = document.querySelector("#create-movie-form")
+    newFormData.addEventListener("submit", (e) => dataHandler(e))
 })
 
 function getMovie() {
@@ -22,4 +25,12 @@ function getMovie() {
               document.querySelector('#movie-container').innerHTML += movieMarkup
             })
         })
+    }
+
+    function dataHandler(e) {
+        e.preventDefault()
+        const titleInput = document.querySelector('#input-title').value
+        const descriptionInput = document.querySelector('#input-description').value
+        const imageInput = document.querySelector('#input-url').value
+        const categoryInput = document.querySelector('#categories').value
     }
