@@ -6,6 +6,37 @@
         <script type="text/javascript" src="index.js"></script>
     </head>
     <body>
+        <div class="form-container">
+
+            <form id="new-movie-form" >
+              <h3>Add a Movie to the collection!</h3>
+          
+              <input id='input-title' type="text" name="title" value="" placeholder="Enter Movie Title..." class="input-text">
+              <br><br>
+              <textarea id='input-description' name="description" rows="8" cols="80" value="" placeholder="Write a description..."></textarea>
+              <br><br>
+              <input id='input-url' type="text" name="image" value="" placeholder="Enter a Movie Poster image URL..." class="input-text">
+              <br><br>
+                
+                <p>Please Select a Genre</p>
+              <select id="categories" name="categories">
+                <option value="1">Action</option>
+                <option value="2">Comedy</option>
+                <option value="3">Drama</option>
+                <option value="4">Sci_fi</option>
+                <option value="5">Horror</option>
+                <option value="6">Mystery</option>
+                <option value="7">Romance</option>
+                <option value="8">Thriller</option>
+                <option value="9">Western</option>
+              </select>
+              <br><br>
+          
+              <input id= 'create-button' type="submit" name="submit" value="Submit" class="submit">
+            </form>
+            <br><br>
+          
+          </div>
        <div id="movie-container"></div>
     </body>
 </html>
