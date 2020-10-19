@@ -14,14 +14,16 @@
             <h1>All About Movies</h1>
           </header>
 
-            <form id="new-movie-form" >
+          <section>
+
+            <form id="movie-form" >
               <h3>Add a Movie to the collection!</h3>
           
               <input id='input-title' type="text" name="title" value="" placeholder="Enter Movie Title..." class="input-text">
               <br><br>
               <textarea id='input-description' name="description" rows="8" cols="80" value="" placeholder="Write a description..."></textarea>
               <br><br>
-              <input id='input-url' type="text" name="image" value="" placeholder="Enter a Movie Poster image URL..." class="input-text">
+              <textarea id='input-url' type="text" name="image" rows="4" cols="60" value="" placeholder="Enter a Movie Poster image URL..." class="input-text"></textarea>
               <br><br>
                 
                 <p>Please Select a Genre</p>
@@ -39,10 +41,12 @@
               <br><br>
           
               <input id= 'create-button' type="submit" name="submit" value="Submit" class="submit">
+              <hr />
             </form>
             <br><br>
           
-          </div>
-       <div id="movie-container"></div>
-    </body>
+          </section>
+        </div>
+      <div id="movie-container"></div>
+  </body>
 </html>

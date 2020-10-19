@@ -1,14 +1,14 @@
-const endpoint = "http://localhost:3000/api/v1/movies"
+const BASE_URL = "http://localhost:3000/api/v1/movies"
 
 document.addEventListener('DOMContentLoaded', () => {
     getFetch()
 
-    const newFormData = document.querySelector("#new-movie-form")
+    const newFormData = document.querySelector("#movie-form")
     newFormData.addEventListener("submit", (e) => submitHandler(e))
 })
 
 function getFetch() {
-    fetch(endpoint)
+    fetch(BASE_URL)
     .then(res => res.json())
     .then(movies => {
         movies.data.forEach(movie => {
@@ -40,7 +40,7 @@ function submitHandler(e) {
 
 function postFetch(title, description, image_url, category_id) {
      //console.log(title, description, image_url, category_id)
-    fetch(endpoint, {
+    fetch(BASE_URL, {
         method: "POST",
         headers: {"Content-Type": "application/json",
                      "Accept": "application/json"},
