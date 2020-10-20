@@ -43,7 +43,8 @@ function postFetch(title, description, image_url, category_id) {
     fetch(BASE_URL, {
         method: "POST",
         headers: {"Content-Type": "application/json",
-                     "Accept": "application/json"},
+                  "Accept": "application/json"
+                },
          body: JSON.stringify({
             title: title,
             description: description,
