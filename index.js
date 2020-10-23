@@ -12,6 +12,7 @@ function getFetch() {
     .then(res => res.json())
     .then(movies => {
         movies.data.forEach(movie => {
+            let movieData = new Movie(movie, movie.attributes)
             const renderMovie = `
               <div data-id=${movie.id}>
                 <img src=${movie.attributes.image_url} height="300" width="250">
