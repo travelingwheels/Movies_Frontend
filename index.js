@@ -12,17 +12,9 @@ function getFetch() {
     .then(res => res.json())
     .then(movies => {
         movies.data.forEach(movie => {
-            const renderMovie = `
-              <div data-id=${movie.id}>
-                <img src=${movie.attributes.image_url} height="300" width="250">
-                <h3>${movie.attributes.title}</h3>
-                <p>${movie.attributes.description}</p>
-                <p>${movie.attributes.category.name}</p>
-                
-              </div>
-              <br><br>`;
-    
-            document.querySelector('#movie-container').innerHTML += renderMovie
+            let movieData = new Movie(movie, movie.attributes)
+              
+            document.querySelector('#movie-container').innerHTML += movieData.renderMovie()
         })
     })
 }
@@ -54,17 +46,10 @@ function postFetch(title, description, image_url, category_id) {
     })
         .then(res => res.json())
         .then(movie => {
-        //console.log(movie);
-        const renderMovie = `
-              <div data-id=${movie.id}>
-                <img src=${movie.data.attributes.image_url} height="300" width="250">
-                <h3>${movie.data.attributes.title}</h3>
-                <p>${movie.data.attributes.description}</p>
-                <p>${movie.data.attributes.category.name}</p>
-                
-              </div>
-              <br><br>`;
+            const newMovie = movie.data
+
+            let movieData = new Movie(newMovie, newMovie.attributes)
         
-        document.querySelector('#movie-container').innerHTML += renderMovie;
+        document.querySelector('#movie-container').innerHTML += movieData.renderMovie()
     })
 }
