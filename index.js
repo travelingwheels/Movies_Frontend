@@ -1,4 +1,6 @@
-const BASE_URL = "http://localhost:3000/api/v1/movies"
+const endPoint = "http://localhost:3000/api/v1/movies"
+const searchBar = document.getElementById('searchBar')
+searchBar.addEventListener("keyup", (e) => keyUpHandler(e))
 
 document.addEventListener('DOMContentLoaded', () => {
     getFetch()
@@ -7,19 +9,44 @@ document.addEventListener('DOMContentLoaded', () => {
     newFormData.addEventListener("submit", (e) => submitHandler(e))
 })
 
+let frontendMovies = []
+
+
 function getFetch() {
-    fetch(BASE_URL)
+    fetch(endPoint)
     .then(res => res.json())
     .then(movies => {
         movies.data.forEach(movie => {
             let movieData = new Movie(movie, movie.attributes)
-              
-            document.querySelector('#movie-container').innerHTML += movieData.renderMovie()
+            frontendMovies.push(movieData)
         })
-    })
+        const sorted = Movie.sortByTitle(frontendMovies);
+        sorted.forEach(movie => {
+            document.querySelector('#movie-container').innerHTML += movie.renderMovie()   
+        })  
+     })
+     .catch(error => console.log(error));
 }
 
     
+function keyUpHandler(e) {
+    const searchString = e.target.value.toLowerCase();
+    const filteredMovie = frontendMovies.filter((selectMovie) => {
+        return (selectMovie.title.toLowerCase().includes(searchString));
+    });
+    let filteredArray = []
+    filteredMovie.forEach(movie => {
+        let movieData = new Movie(movie, movie.attributes)
+        filteredArray.push(movieData)
+    })
+    
+    const sorted = Movie.sortByTitle(filteredArray);
+    document.querySelector('#movie-container').innerHTML = ""
+    sorted.forEach(movie => {
+        document.querySelector('#movie-container').innerHTML += movie.renderMovie()   
+    })  
+}
+
 
 function submitHandler(e) {
     e.preventDefault()
@@ -30,9 +57,11 @@ function submitHandler(e) {
     postFetch(titleInput, descriptionInput, imageInput, categoryId)
 }
 
+
+
+
 function postFetch(title, description, image_url, category_id) {
-     //console.log(title, description, image_url, category_id)
-    fetch(BASE_URL, {
+    fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json",
                   "Accept": "application/json"
@@ -47,9 +76,14 @@ function postFetch(title, description, image_url, category_id) {
         .then(res => res.json())
         .then(movie => {
             const newMovie = movie.data
-
+            console.log(movie)
             let movieData = new Movie(newMovie, newMovie.attributes)
-        
-        document.querySelector('#movie-container').innerHTML += movieData.renderMovie()
-    })
+            frontendMovies.push(movieData)
+            const sorted = Movie.sortByTitle(frontendMovies);
+            document.querySelector('#movie-container').innerHTML = " "
+            sorted.forEach(movie => {
+            document.querySelector('#movie-container').innerHTML += movie.renderMovie()   
+            })  
+         })
+         .catch(error => console.log(error));
 }
