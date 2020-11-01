@@ -4,20 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Movies</title>
-        <script type="text/javascript" src="index.js"></script>
-        <script type="text/javascript" src="movie.js"></script>
+        <link rel="stylesheet" href="style.css">
+        
     </head>
     <body>
+
+      <nav class="topnav">
+        
+        <input type="text"
+        name="searchBar"
+        id="searchBar"
+        placeholder="search for a movie title">
+        </nav><br>
         <div id="wrapper">
-
+          <div class="grid">
+            
+          <div class="span-col-4">
           <header>
-            <h1>All About Movies</h1>
+            <h1>My Movie Database</h1>
           </header>
-
+          </div>
+          <hr />
           <section>
-
+            <div class="span-col-3">
             <form id="movie-form" >
-              <h3>Add a Movie to the collection!</h3>
+              <h2>Add a Movie to the collection!</h2>
           
               <input id='input-title' type="text" name="title" value="" placeholder="Enter Movie Title..." class="input-text">
               <br><br>
@@ -43,10 +54,16 @@
               <input id= 'create-button' type="submit" name="submit" value="Submit" class="submit">
               <hr />
             </form>
+            </div>
             <br><br>
           
           </section>
+         </div>
         </div>
+        <div class="span-col-1">
       <div id="movie-container"></div>
+    </div>
+      <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript" src="movie.js"></script>
   </body>
 </html>
