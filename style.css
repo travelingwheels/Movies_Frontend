@@ -1,0 +1,41 @@
+  .topnav {
+    background-color: silver;
+    overflow: hidden;
+    text-align: right;
+    height: 50px;
+  }
+
+  .topnav input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat( 1fr);
+    grid-gap: 10px;
+  }
+
+  .span-col-3 {
+    padding: 25px 50px 75px 100px;
+  }
+
+  .span-col-4 {
+      background-color: black;
+      color: white;
+      border-style: solid;
+      text-align: center;
+      height: 125px;
+  }
+
+  #movie-container {
+    background-color: darkgrey;
+    border-style: double;
+    margin: 25px 50px 75px 100px;
+    padding: 25px 50px 75px 100px;
+    text-align: center;
+  }
