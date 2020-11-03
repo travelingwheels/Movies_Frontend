@@ -1,12 +1,14 @@
 const endPoint = "http://localhost:3000/api/v1/movies"
-const searchBar = document.getElementById('searchBar')
-searchBar.addEventListener("keyup", (e) => keyUpHandler(e))
+
 
 document.addEventListener('DOMContentLoaded', () => {
     getFetch()
 
     const newFormData = document.querySelector("#movie-form")
     newFormData.addEventListener("submit", (e) => submitHandler(e))
+
+    const searchBar = document.getElementById('searchBar')
+    searchBar.addEventListener("keyup", (e) => keyUpHandler(e))
 })
 
 let frontendMovies = []
@@ -76,7 +78,6 @@ function postFetch(title, description, image_url, category_id) {
         .then(res => res.json())
         .then(movie => {
             const newMovie = movie.data
-            console.log(movie)
             let movieData = new Movie(newMovie, newMovie.attributes)
             frontendMovies.push(movieData)
             const sorted = Movie.sortByTitle(frontendMovies);
