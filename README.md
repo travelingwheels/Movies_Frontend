@@ -4,7 +4,7 @@ Welcome to my movie database. This is a single page application for keeping trac
 
 ## Backend
 
-The Rails API backend for this project is located [here](https://github.com/travelingwheels/Movies_Frontend.git)
+The Rails API backend for this project is located [here] (https://github.com/travelingwheels/Movies_Backend)
 
 ## Install and Usage
 
